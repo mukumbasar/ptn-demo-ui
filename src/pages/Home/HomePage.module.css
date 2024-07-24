@@ -1,0 +1,79 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #e35a3b;
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.addButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #332e2c;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.addButton:hover {
+    background-color: #5b514f;
+}
+
+.headerTitle {
+    color: white;
+    font-size: 36px;
+}
+
+.tableContainer {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    overflow: auto;
+    position: relative;
+}
+
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #e4e0dcf3;
+    border: 1px solid #ddd;
+    table-layout: fixed;
+}
+
+.tableHeader {
+    position: sticky;
+    top: 0;
+    background-color: #332e2c;
+    color: white;
+    font-size: 18px;
+    border: 1px solid black;
+    padding: 12px;
+    z-index: 1;
+}
+
+.tableCell {
+    border: 1px solid black;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.deleteButton {
+    border: none;
+    background: none;
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+}

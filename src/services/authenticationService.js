@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const logIn = async (username, password) => {
     try {
-        const response = await axios.post('...account/logIn', {
+        const response = await axios.post('...account/log-in', {
             Username: username,
             Password: password
         });

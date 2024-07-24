@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const createBuilding = async (constructionTime, constructionCost, buildingTypeId) => {
     try {
-        const response = await axios.post('...building/create', {
+        const response = await axios.post('...building', {
             ConstructionTime: constructionTime,
             ConstructionCost: constructionCost,
             BuildingTypeId: buildingTypeId
@@ -18,7 +18,7 @@ const createBuilding = async (constructionTime, constructionCost, buildingTypeId
 
 const deleteBuilding = async (id) => {
     try {
-        const response = await axios.get('...building/delete', {
+        const response = await axios.delete('...building', {
             Id: id
         });
         return response.data.Message;
