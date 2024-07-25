@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './RegisterPage.module.css';
 import { useAuthenticationContext } from '../../contexts/AuthenticationContext.jsx';
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
-    const { registerError, username, email, password, setUsername, setEmail, setPassword, handleRegister } = useAuthenticationContext();
+    const { registerError, username, email, password, setUsername, 
+        setEmail, setPassword, handleRegister, isAuthenticated, handleLogOut 
+    } = useAuthenticationContext();
     
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setUsername('');
+        setPassword('');
+        setEmail('');
+    }, [setUsername, setPassword, setEmail]);
+
+    useEffect(() => {
+        if(isAuthenticated) {
+            navigate('/');
+        }
+    }, []);
+
     return (
         <div className={styles.registerContainer}>
             <div className={styles.header}>

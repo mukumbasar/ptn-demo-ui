@@ -1,0 +1,33 @@
+.dataGridContainer {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow-x: auto;
+  }
+  
+  .dataGridTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .dataGridTable th,
+  .dataGridTable td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dataGridTable th {
+    background-color: #f4f4f4;
+  }
+  
+  .dataGridTable tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* .dataTable th:first-child,
+  .dataTable td:first-child {
+    display: none;
+} */
