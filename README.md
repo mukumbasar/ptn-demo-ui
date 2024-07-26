@@ -1,4 +1,4 @@
-An interview project made with React.
+A React-based project showcasing various features and tools, in sync with a web-api.
 
 ## Tools:
 - Context: For state management.
