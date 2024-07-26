@@ -27,7 +27,7 @@
     background-color: #f9f9f9;
   }
   
-  /* .dataTable th:first-child,
+  .dataTable th:first-child,
   .dataTable td:first-child {
     display: none;
-} */
+}

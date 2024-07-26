@@ -1,5 +1,4 @@
 import React, { createContext, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -9,12 +8,21 @@ const AuthProvider = ({ children }) => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
-    const navigate = useNavigate();
+    const loginFields = [
+        { type: 'text', value: username, onChange: setUsername, placeholder: 'Username:' },
+        { type: 'password', value: password, onChange: setPassword, placeholder: 'Password:' },
+      ];
+    const registerFields = [
+        { type: 'email', value: email, onChange: setEmail, placeholder: 'Email:' },
+        { type: 'text', value: username, onChange: setUsername, placeholder: 'Username:' },
+        { type: 'password', value: password, onChange: setPassword, placeholder: 'Password:' },
+      ];  
 
     return (
         <AuthContext.Provider value={{
-            username, password, email, navigate,
-            setUsername, setPassword, setEmail}}>
+            username, password, email,
+            setUsername, setPassword, setEmail,
+            loginFields, registerFields}}>
             {children}
         </AuthContext.Provider>
     );

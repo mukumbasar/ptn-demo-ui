@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getToken = () => axios.defaults.headers.common['Authorization'];
 
-const createBuilding = async (constructionTime, buildingCost, buildingTypeId, buildingType) => {
+const createBuildingAsync = async (constructionTime, buildingCost, buildingTypeId, buildingType) => {
     try {
         const formData = new FormData();
         formData.append('ConstructionTime', constructionTime);
@@ -20,14 +20,14 @@ const createBuilding = async (constructionTime, buildingCost, buildingTypeId, bu
             }
         });
         
-        return response.data.message || 'Building Creation Success';
+        return response.data.message || 'Creation Success';
     } catch (error) {
-        const errorMessage = error.response?.data?.message || 'Building Creation Error';
-        return errorMessage;
+        const errorMessage = error.response?.data?.message || 'Creation Error';
+        throw new Error(errorMessage);
     }
 };
 
-const deleteBuilding = async (id) => {
+const deleteBuildingAsync = async (id) => {
     try {
         const response = await axios({
             method: 'DELETE',
@@ -37,14 +37,14 @@ const deleteBuilding = async (id) => {
             }
         });
         
-        return response.data.message || 'Building Deletion Success';
+        return response.data.message || 'Deletion Success';
     } catch (error) {
-        const errorMessage = error.response?.data?.message || 'Building Deletion Error';
+        const errorMessage = error.response?.data?.message || 'Deletion Error';
         throw new Error(errorMessage);
     }
 };
 
-const getAllBuildings = async () => {
+const getAllBuildingsAsync = async () => {
     try {
         const response = await axios.get('https://ptndemoapi.azurewebsites.net/buildings', {
             headers: {
@@ -53,12 +53,12 @@ const getAllBuildings = async () => {
         });
         return response.data;
     } catch (error) {
-        const errorMessage = error.response?.data?.message || 'Building Retrieval Error';
+        const errorMessage = error.response?.data?.message || 'Retrieval Error';
         throw new Error(errorMessage);
     }
 };
 
-const getAllNotBuiltBuildingTypes = async () => {
+const getAllNotBuiltBuildingTypesAsync = async () => {
     try {
         const response = await axios.get('https://ptndemoapi.azurewebsites.net/building-types/not-built', {
             headers: {
@@ -68,9 +68,9 @@ const getAllNotBuiltBuildingTypes = async () => {
 
         return response.data;
     } catch (error) {
-        const errorMessage = error.response?.data?.message || 'Building Type Retrieval Error';
+        const errorMessage = error.response?.data?.message || 'Retrieval Error';
         throw new Error(errorMessage);
     }
 };
 
-export { createBuilding, deleteBuilding, getAllBuildings, getAllNotBuiltBuildingTypes };
+export { createBuildingAsync, deleteBuildingAsync, getAllBuildingsAsync, getAllNotBuiltBuildingTypesAsync };

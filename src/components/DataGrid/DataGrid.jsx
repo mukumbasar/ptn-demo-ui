@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTable } from 'react-table';
 import styles from './DataGrid.module.css';
-import { useHomeContext } from '../../contexts/HomeContext.jsx';
+import useBuildingMethods from '../../hooks/useBuildingMethods';
 
-const DataGrid = ({ dataGridData }) => {
-    const { handleDeleteBuilding } = useHomeContext();
+const DataGrid = ({ dataGridData, }) => {
+    const { handleDeleteBuildingAsync } = useBuildingMethods();
 
     const columns = React.useMemo(
         () => [
@@ -16,7 +16,7 @@ const DataGrid = ({ dataGridData }) => {
                 Header: 'Actions',
                 Cell: ({ row }) => (
                     <button
-                        onClick={() => handleDeleteBuilding(row.original.id)}
+                        onClick={() => handleDeleteBuildingAsync(row.original.id)}
                         className={styles.deleteButton}
                     >
                         X
@@ -24,7 +24,7 @@ const DataGrid = ({ dataGridData }) => {
                 ),
             },
         ],
-        [handleDeleteBuilding]
+        []
     );
 
     const data = Array.isArray(dataGridData) ? dataGridData : [];
@@ -35,15 +35,12 @@ const DataGrid = ({ dataGridData }) => {
         headerGroups,
         rows,
         prepareRow
-    } = useTable({
-        columns,
-        data
-    });
+    } = useTable({ columns, data });
 
     return (
         <table {...getTableProps()} className={styles.dataTable}>
             <thead>
-                {headerGroups.length > 0 && headerGroups.map(headerGroup => (
+                {headerGroups.map(headerGroup => (
                     <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
                         {headerGroup.headers.map(column => (
                             <th

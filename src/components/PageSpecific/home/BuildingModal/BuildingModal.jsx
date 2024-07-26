@@ -1,27 +1,30 @@
 import React, { useEffect } from 'react';
-import styles from './Modal.module.css';
-import { useHomeContext } from '../../contexts/HomeContext.jsx';
+import styles from './BuildingModal.module.css';
+import { useBuildingContext } from '../../../../contexts/BuildingContext.jsx';
+import useBuildingMethods from '../../../../hooks/useBuildingMethods.js';
 
-const Modal = ({ isOpen, onClose }) => {
-  const { handleGetAllBuildings, handleCreateBuilding, notBuiltBuildingTypes, setBuildingCost, setConstructionTime, setBuildingType, 
-    buildingCost, constructionTime, buildingType, buildingTypeId, setBuildingTypeId, handleGetAllNotBuiltBuildingTypes } = useHomeContext();
-
-  useEffect(() => {
-    const fetchBuildingTypes = async () => {
-      await handleGetAllNotBuiltBuildingTypes();
-    };
-    
-    if (isOpen) {
-      fetchBuildingTypes();
+const BuildingModal = ({ isOpen, onClose }) => {
+  const { notBuiltBuildingTypes, setBuildingCost, setConstructionTime, setBuildingType, 
+    buildingCost, constructionTime, buildingType, setBuildingTypeId } = useBuildingContext();
+  const { handleGetAllNotBuiltBuildingTypesAsync, handleCreateBuildingAsync} = useBuildingMethods();
+  
+  const fetchData = async () => 
+    {
+      if (isOpen) {
+        await handleGetAllNotBuiltBuildingTypesAsync();
+      }
     }
-  }, [isOpen]);
 
   const handleSubmit = async () => {
-    await handleCreateBuilding(constructionTime, buildingCost, buildingTypeId, buildingType);
-    await handleGetAllBuildings();
-    handleOnClose();
-  };
+      await handleCreateBuildingAsync();
+      handleOnClose();
+    };
 
+  useEffect(() => {
+    fetchData();
+    }, [isOpen]);
+
+  
   const handleOnClose = () => {
     onClose();
     setBuildingCost('');
@@ -73,4 +76,4 @@ const Modal = ({ isOpen, onClose }) => {
   );
 };
 
-export default Modal;
+export default BuildingModal;

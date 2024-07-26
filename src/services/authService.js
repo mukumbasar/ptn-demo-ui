@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const logIn = async (username, password) => {
+const logInAsync = async (username, password) => {
     try {
         const formData = new FormData();
         formData.append('Username', username);
@@ -23,7 +23,7 @@ const logIn = async (username, password) => {
     }
 };
 
-const register = async (username, email, password) => {
+const registerAsync = async (username, email, password) => {
     try {
         const formData = new FormData();
         formData.append('Username', username);
@@ -46,8 +46,8 @@ const register = async (username, email, password) => {
     }
 };
 
-const logOut = async () => {
+const logOutAsync = async () => {
     delete axios.defaults.headers.common['Authorization'];
 };
 
-export { logIn, register, logOut };
+export { logInAsync, registerAsync, logOutAsync };
