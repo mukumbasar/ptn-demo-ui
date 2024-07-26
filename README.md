@@ -1,8 +1,13 @@
-# React + Vite
+An interview project made with React.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tools:
+- Context: For state management.
+- react-router-dom: For routing and navigation.
+- axios: For making HTTP requests.
+- react-table: For creating tables with advanced features.
+- react-scripts: For running and building the project.
+- prop-types: For type-checking React props.
+- react-toastify: For displaying notifications.
+- js-cookie: For managing cookies.
+- gh-pages: For deploying the project to GitHub Pages.
+- CSS & JavaScript: For styling and functionality.
