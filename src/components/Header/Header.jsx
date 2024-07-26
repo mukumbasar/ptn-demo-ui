@@ -9,7 +9,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     const linkDestination = pathname === '/login' ? '/register' : '/login';
-    const linkText = pathname === '/login' ? 'Register' : 'Login';
+    const linkText = pathname === '/login' ? 'Register' : 'Log In';
 
     const handleClick = async (event) => {
         event.preventDefault();

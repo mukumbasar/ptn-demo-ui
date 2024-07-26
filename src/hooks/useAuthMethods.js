@@ -57,7 +57,7 @@ const useAuthMethods = () => {
         setPassword('');
     }
 
-    return { handleLogInAsync, handleRegisterAsync, handleLogOutAsync, checkIfAuthenticated };
+    return { handleLogInAsync, handleRegisterAsync, handleLogOutAsync, checkIfAuthenticated, resetForm };
 };
 
 export default useAuthMethods;

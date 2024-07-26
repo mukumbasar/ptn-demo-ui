@@ -4,10 +4,11 @@ import LoginForm from '../../components/PageSpecific/login/LoginForm/LoginForm.j
 import useAuthMethods from '../../hooks/useAuthMethods.js';
 import Header from '../../components/Header/Header.jsx'
 const LoginPage = () => {
-    const { checkIfAuthenticated } = useAuthMethods();
+    const { checkIfAuthenticated, resetForm } = useAuthMethods();
 
     useEffect(() => {
-        checkIfAuthenticated();  
+        checkIfAuthenticated(); 
+        resetForm(); 
     }, []);
 
     return (<div className={styles.pageContainer}>

@@ -4,13 +4,13 @@ import App from './App.jsx'
 import './index.css'
 import {AuthProvider} from './contexts/AuthContext.jsx'
 import { ToastContainer } from 'react-toastify';
-import { BrowserRouter} from "react-router-dom";
+import { HashRouter} from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <BrowserRouter>
+    <HashRouter>
       <App />
       <ToastContainer
         position="bottom-right"
@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         pauseOnHover
         theme="light"
       />
-    </BrowserRouter>
+    </HashRouter>
     </AuthProvider>
   </React.StrictMode>,
 )
