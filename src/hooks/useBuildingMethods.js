@@ -5,14 +5,15 @@ import { toast } from 'react-toastify';
 
 const useBuildingMethods = () =>
 {
-    const {setBuildings, setNotBuiltBuildingTypes,
+    const {setBuildings, setNotBuiltBuildingTypes, buildings,
             buildingCost, constructionTime, buildingTypeId, buildingType
     } = useBuildingContext();
 
     const handleCreateBuildingAsync = async () => {
         try {
-           const message = await createBuildingAsync(constructionTime, buildingCost, buildingTypeId, buildingType);
-           toast.success(message);
+            const message = await createBuildingAsync(constructionTime, buildingCost, 
+            buildingTypeId, buildingType);
+            await handleGetAllBuildingsAsync();
         } catch (error) {
             toast.error(error.message);
         }
@@ -21,6 +22,7 @@ const useBuildingMethods = () =>
     const handleDeleteBuildingAsync = async (id) => {
         try {
            const message = await deleteBuildingAsync(id);
+           setBuildings(prevBuildings => prevBuildings.filter(building => building.id !== id));
            toast.success(message);
         } catch (error) {
             toast.error(error.message);
@@ -31,7 +33,6 @@ const useBuildingMethods = () =>
         try {
            const output = await getAllBuildingsAsync();
            setBuildings(output.data);
-           console.log(output.message);
         } catch (error) {
             console.log(error.message);
         }
@@ -41,7 +42,6 @@ const useBuildingMethods = () =>
         try {
            const output = await getAllNotBuiltBuildingTypesAsync();
            setNotBuiltBuildingTypes(output.data);
-           console.log(output.message);
         } catch (error) {
             console.log(error.message);
         }

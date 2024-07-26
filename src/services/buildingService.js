@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const getToken = () => axios.defaults.headers.common['Authorization'];
+const token = Cookies.get('jwt');
 
 const createBuildingAsync = async (constructionTime, buildingCost, buildingTypeId, buildingType) => {
     try {
@@ -9,14 +10,14 @@ const createBuildingAsync = async (constructionTime, buildingCost, buildingTypeI
         formData.append('BuildingCost', buildingCost);
         formData.append('BuildingTypeId', buildingTypeId);
         formData.append('BuildingType', buildingType);
-
+        
         const response = await axios({
             method: 'POST',
             url: 'https://ptndemoapi.azurewebsites.net/buildings',
             data: formData,
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Authorization': `${getToken()}`
+                'Authorization': `Bearer ${token}`
             }
         });
         
@@ -33,7 +34,7 @@ const deleteBuildingAsync = async (id) => {
             method: 'DELETE',
             url: `https://ptndemoapi.azurewebsites.net/buildings/${id}`,
             headers: {
-                'Authorization': `${getToken()}`
+                'Authorization': `Bearer ${token}`
             }
         });
         
@@ -48,7 +49,7 @@ const getAllBuildingsAsync = async () => {
     try {
         const response = await axios.get('https://ptndemoapi.azurewebsites.net/buildings', {
             headers: {
-                'Authorization': `${getToken()}`
+                'Authorization': `Bearer ${token}`
             }
         });
         return response.data;
@@ -62,7 +63,7 @@ const getAllNotBuiltBuildingTypesAsync = async () => {
     try {
         const response = await axios.get('https://ptndemoapi.azurewebsites.net/building-types/not-built', {
             headers: {
-                'Authorization': `${getToken()}`
+                'Authorization': `Bearer ${token}`
             }
         });
 

@@ -1,0 +1,41 @@
+header {
+    background: #f4f4f4;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+li {
+    margin: 0 1rem;
+}
+
+button {
+    border: none;
+    background: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const logInAsync = async (username, password) => {
     try {
@@ -15,7 +16,7 @@ const logInAsync = async (username, password) => {
             }
         });
 
-        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.data.jwt}`;
+        Cookies.set('jwt', response.data.data.jwt, { expires: 7 });
         return response.data.message || 'Login Success';
     } catch (error) {
         const errorMessage = error.response?.data?.message || 'A login error occurred.';
@@ -47,7 +48,7 @@ const registerAsync = async (username, email, password) => {
 };
 
 const logOutAsync = async () => {
-    delete axios.defaults.headers.common['Authorization'];
+    Cookies.remove('jwt');
 };
 
 export { logInAsync, registerAsync, logOutAsync };

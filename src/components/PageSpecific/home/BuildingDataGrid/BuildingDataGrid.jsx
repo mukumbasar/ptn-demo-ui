@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTable } from 'react-table';
-import styles from './DataGrid.module.css';
-import useBuildingMethods from '../../hooks/useBuildingMethods';
+import styles from './BuildingDataGrid.module.css';
+import useBuildingMethods from '../../../../hooks/useBuildingMethods.js';
 
-const DataGrid = ({ dataGridData, }) => {
+const BuildingDataGrid = ({ dataGridData, }) => {
     const { handleDeleteBuildingAsync } = useBuildingMethods();
 
     const columns = React.useMemo(
@@ -84,4 +84,4 @@ const DataGrid = ({ dataGridData, }) => {
     );
 };
 
-export default DataGrid;
+export default BuildingDataGrid;

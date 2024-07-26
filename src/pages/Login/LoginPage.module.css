@@ -1,3 +1,8 @@
+.pageContainer
+{
+    background-color: #e35a3b;
+}
+
 .loginContainer {
     display: flex;
     flex-direction: column;
@@ -5,7 +10,6 @@
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
-    background-color: #e35a3b;
 }
 
 .header {

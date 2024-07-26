@@ -1,8 +1,8 @@
 import { logInAsync, logOutAsync, registerAsync } from '../services/authService.js';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useAuthContext } from '../contexts/AuthContext.jsx';
+import Cookies from 'js-cookie';
 
 const useAuthMethods = () => {
     const navigate = useNavigate();
@@ -12,12 +12,9 @@ const useAuthMethods = () => {
     const handleLogInAsync = async () => {
         try {
             const message = await logInAsync(username, password);
-            const isAuthenticated = checkIfAuthenticated();
-            console.log(message);
-            if(isAuthenticated) 
-            {
-                toast.success(message);
-            }
+            resetForm();
+            checkIfAuthenticated();
+            toast.success(message);
         } catch (error) {
             toast.error(error.message);
         }
@@ -27,7 +24,8 @@ const useAuthMethods = () => {
         try {
             const message = await registerAsync(username, email, password);
             toast.success(message);
-            completeRegistration();
+            resetForm();
+            navigate('/login');
         } catch (error) {
             toast.error(error.message);
         }
@@ -36,6 +34,7 @@ const useAuthMethods = () => {
     const handleLogOutAsync = async () => {
         try {
             await logOutAsync();
+            resetForm();
             checkIfAuthenticated();
         } catch (error) {
             toast.error(error.message);
@@ -43,22 +42,19 @@ const useAuthMethods = () => {
     };
 
     const checkIfAuthenticated = () => {
-        const authHeader = axios.defaults.headers.common['Authorization'];
-        const isJwt = authHeader && authHeader.startsWith('Bearer ');
-        if (isJwt) {
+        const jwt = Cookies.get('jwt');
+        if (jwt) {
             navigate('/');
             return true;
         }
-        if(location.pathname !== '/register')
-            navigate('/login');
+        if(location.pathname == '/') navigate('/login');
         return false;
     };
 
-    const completeRegistration = () => {
+    const resetForm = () => {
         setUsername(''); 
         setEmail(''); 
         setPassword('');
-        navigate('/login');
     }
 
     return { handleLogInAsync, handleRegisterAsync, handleLogOutAsync, checkIfAuthenticated };
