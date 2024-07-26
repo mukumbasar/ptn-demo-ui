@@ -38,7 +38,6 @@ const BuildingModal = ({ isOpen, onClose }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h2>Add Building</h2>
         <form>
           <input 
             type="text" 
@@ -68,8 +67,10 @@ const BuildingModal = ({ isOpen, onClose }) => {
               <option key={type.id} value={type.name}>{type.name}</option>
             ))}
           </select>
-          <button type="button" onClick={handleSubmit} className={styles.saveButton}>Save</button>
-          <button type="button" onClick={handleOnClose} className={styles.cancelButton}>Cancel</button>
+          <div className={styles.buttonContainer}>
+            <button type="button" onClick={handleSubmit} className={styles.saveButton}>Add</button>
+            <button type="button" onClick={handleOnClose} className={styles.cancelButton}>Cancel</button>
+          </div>
         </form>
       </div>
     </div>

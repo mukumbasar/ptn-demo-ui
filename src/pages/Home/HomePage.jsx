@@ -7,6 +7,8 @@ import Header from '../../components/Header/Header.jsx';
 import useBuildingMethods from '../../hooks/useBuildingMethods.js';
 import { useBuildingContext } from '../../contexts/BuildingContext.jsx';
 
+
+
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,11 +35,9 @@ const HomePage = () => {
           <button onClick={() => setIsModalOpen(true)} className={styles.addButton}>Add</button>
           <h2 className={styles.title}>Buildings</h2>
         </div>
-        <div className={styles.tableContainer}>
         <BuildingDataGrid dataGridData={buildings} />
-        </div>
         <BuildingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </div>
+      </div>
     </div>
     
   );

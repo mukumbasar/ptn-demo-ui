@@ -2,6 +2,8 @@ import { useBuildingContext } from '../contexts/BuildingContext.jsx';
 import { createBuildingAsync, deleteBuildingAsync,
      getAllBuildingsAsync, getAllNotBuiltBuildingTypesAsync } from '../services/buildingService.js';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
+
 
 const useBuildingMethods = () =>
 {
@@ -9,10 +11,13 @@ const useBuildingMethods = () =>
             buildingCost, constructionTime, buildingTypeId, buildingType
     } = useBuildingContext();
 
+    const token = Cookies.get('jwt');
+
     const handleCreateBuildingAsync = async () => {
         try {
             const message = await createBuildingAsync(constructionTime, buildingCost, 
-            buildingTypeId, buildingType);
+            buildingTypeId, buildingType, token);
+            toast.success(message);
             await handleGetAllBuildingsAsync();
         } catch (error) {
             toast.error(error.message);
@@ -21,7 +26,7 @@ const useBuildingMethods = () =>
 
     const handleDeleteBuildingAsync = async (id) => {
         try {
-           const message = await deleteBuildingAsync(id);
+           const message = await deleteBuildingAsync(id, token);
            setBuildings(prevBuildings => prevBuildings.filter(building => building.id !== id));
            toast.success(message);
         } catch (error) {
@@ -31,7 +36,7 @@ const useBuildingMethods = () =>
 
     const handleGetAllBuildingsAsync = async () => {
         try {
-           const output = await getAllBuildingsAsync();
+           const output = await getAllBuildingsAsync(token);
            setBuildings(output.data);
         } catch (error) {
             console.log(error.message);
@@ -40,7 +45,7 @@ const useBuildingMethods = () =>
 
     const handleGetAllNotBuiltBuildingTypesAsync = async () => {
         try {
-           const output = await getAllNotBuiltBuildingTypesAsync();
+           const output = await getAllNotBuiltBuildingTypesAsync(token);
            setNotBuiltBuildingTypes(output.data);
         } catch (error) {
             console.log(error.message);

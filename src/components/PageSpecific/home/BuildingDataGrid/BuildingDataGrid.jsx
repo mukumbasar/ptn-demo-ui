@@ -10,8 +10,8 @@ const BuildingDataGrid = ({ dataGridData, }) => {
         () => [
             { Header: 'ID', accessor: 'id' },
             { Header: 'Building Type', accessor: 'buildingType' },
-            { Header: 'Construction Time', accessor: 'constructionTime' },
-            { Header: 'Building Cost', accessor: 'buildingCost' },
+            { Header: 'Construction Time', accessor: 'constructionTime', Cell: ({ value }) => `${value} Seconds` },
+            { Header: 'Building Cost', accessor: 'buildingCost', Cell: ({ value }) => `${value} Gold` },
             {
                 Header: 'Actions',
                 Cell: ({ row }) => (

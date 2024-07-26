@@ -1,33 +1,36 @@
-.dataGridContainer {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    overflow-x: auto;
-  }
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 0.75rem; 
+  text-align: center;
   
-  .dataGridTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .dataGridTable th,
-  .dataGridTable td {
-    padding: 0.5rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .dataGridTable th {
-    background-color: #f4f4f4;
-  }
-  
-  .dataGridTable tr:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .dataTable th:first-child,
-  .dataTable td:first-child {
+}
+
+.dataTable th {
+  background-color: #201f1f;
+  border-right: 1px solid #ddd;
+  color: #e6dcdc; 
+}
+
+.dataTable td {
+  background-color: #e4e0dcf3;
+  border-right: 1px solid #1f1e1e;
+}
+
+.dataTable th:first-child,
+.dataTable td:first-child {
     display: none;
+}
+
+.dataTable th:last-child,
+.dataTable td:last-child {
+    border: 0px;
+}
+
+.dataTable td:last-child button {
+  width: 25%;
 }

@@ -1,3 +1,9 @@
+.pageContainer{
+    background-color: #e35a3b;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .registerContainer {
     display: flex;
     flex-direction: column;
@@ -5,7 +11,7 @@
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
-    background-color: #e35a3b;
+    
 }
 
 .header {

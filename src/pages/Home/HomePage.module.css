@@ -1,7 +1,7 @@
 .pageContainer {
   background-color: #e35a3b;
   height: 100vh;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .pageContentContainer
@@ -12,45 +12,27 @@
   align-items: center;
 }
 
-.dataGridContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 20px;
-}
-
 .titleContainer {
   display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 .addButton {
-  padding: 10px 20px;
+  padding: 5px;
+  margin-right: 1rem;
   border: none;
-  border-radius: 10px;
-  background-color: #332e2c;
+  border-radius: 5px;
+  background-color: #201f1f;
   color: white;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
 }
 
 .addButton:hover {
-  background-color: #5b514f;
+  background-color: #3f3b3a;
 }
 
 .title {
   color: white;
   font-size: 36px;
-}
-
-.tableContainer {
-  width: 100%;
-  max-width: 800px;
-  height: 500px;
-  overflow: auto;
 }

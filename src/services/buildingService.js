@@ -1,9 +1,6 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
-const token = Cookies.get('jwt');
-
-const createBuildingAsync = async (constructionTime, buildingCost, buildingTypeId, buildingType) => {
+const createBuildingAsync = async (constructionTime, buildingCost, buildingTypeId, buildingType, token) => {
     try {
         const formData = new FormData();
         formData.append('ConstructionTime', constructionTime);
@@ -23,12 +20,13 @@ const createBuildingAsync = async (constructionTime, buildingCost, buildingTypeI
         
         return response.data.message || 'Creation Success';
     } catch (error) {
+        console.log(error);
         const errorMessage = error.response?.data?.message || 'Creation Error';
         throw new Error(errorMessage);
     }
 };
 
-const deleteBuildingAsync = async (id) => {
+const deleteBuildingAsync = async (id, token) => {
     try {
         const response = await axios({
             method: 'DELETE',
@@ -45,7 +43,7 @@ const deleteBuildingAsync = async (id) => {
     }
 };
 
-const getAllBuildingsAsync = async () => {
+const getAllBuildingsAsync = async (token) => {
     try {
         const response = await axios.get('https://ptndemoapi.azurewebsites.net/buildings', {
             headers: {
@@ -59,7 +57,7 @@ const getAllBuildingsAsync = async () => {
     }
 };
 
-const getAllNotBuiltBuildingTypesAsync = async () => {
+const getAllNotBuiltBuildingTypesAsync = async (token) => {
     try {
         const response = await axios.get('https://ptndemoapi.azurewebsites.net/building-types/not-built', {
             headers: {

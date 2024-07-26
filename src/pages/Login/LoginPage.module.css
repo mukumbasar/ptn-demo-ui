@@ -1,6 +1,8 @@
 .pageContainer
 {
     background-color: #e35a3b;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .loginContainer {
