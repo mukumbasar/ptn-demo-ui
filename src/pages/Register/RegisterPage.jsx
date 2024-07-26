@@ -22,7 +22,7 @@ const RegisterPage = () => {
                     <span className={`${styles.black}`}>
                     buildings
                     </span>
-                    via datagrid.
+                    via data grid.
                 </h2>
             </div>
             <RegisterForm/>
